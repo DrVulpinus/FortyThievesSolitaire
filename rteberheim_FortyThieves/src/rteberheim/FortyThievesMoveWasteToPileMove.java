@@ -63,7 +63,7 @@ public boolean undo(ks.common.games.Solitaire game) {
 	return true;
 }
 /**
- * Action for Klondike: Move a card to from the Waste Pile to a Buildable Pile
+ * Action for Forty Thieves: Move a card to from the Waste Pile to a Buildable Pile
  * @param game ks.games.Solitaire
  */
 public boolean valid (Solitaire theGame) {
@@ -77,12 +77,12 @@ public boolean valid (Solitaire theGame) {
 
 	if (cardBeingDragged == null) {
 		// 	  moveColumnBetweenPiles(Waste from,BuildablePile to) : not to.empty() and waste.rank() == to.rank() - 1 and to.peek().faceUp()
-		if (!to.empty() && (waste.rank() == to.rank() - 1) && (waste.peek().oppositeColor(to.peek())) && to.peek().isFaceUp()) 
+		if (!to.empty() && (waste.rank() == to.rank() - 1) && (waste.peek().sameSuit(to.peek())) && to.peek().isFaceUp()) 
 			validation = true;
 
 	} else {
 		// 	  moveColumnBetweenPiles(Waste from,BuildablePile to) : not to.empty() and cardBeingDragged.rank() == to.rank() - 1 and to.peek().faceUp()
-		if (!to.empty() && (cardBeingDragged.getRank() == to.rank() - 1) && (cardBeingDragged.oppositeColor(to.peek())) && to.peek().isFaceUp()) 
+		if (!to.empty() && (cardBeingDragged.getRank() == to.rank() - 1) && (cardBeingDragged.sameSuit(to.peek())) && to.peek().isFaceUp()) 
 			validation = true;
 	}
 	return validation;

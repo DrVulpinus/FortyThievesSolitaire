@@ -53,7 +53,7 @@ public class FortyThievesBuildablePileController extends MouseAdapter{
 			boolean moveMade = false;
 			for (int f = 1; f <=4; f++) {
 				Pile fp = (Pile) theGame.getModelElement ("foundation" + f);
-				Move m = new MoveCardToFoundationMove (theBP, null, fp);
+				Move m = new FortyThievesMoveCardToFoundationMove (theBP, null, fp);
 				if (m.doMove(theGame)) {
 
 					// Success! Add this move to our history.
@@ -204,7 +204,7 @@ public class FortyThievesBuildablePileController extends MouseAdapter{
 			}
 
 			Pile wastePile = (Pile) fromWidget.getModelElement();
-			Move m = new MoveWasteToPileMove (wastePile, theCard, toPile);
+			Move m = new FortyThievesMoveWasteToPileMove (wastePile, theCard, toPile);
 			if (m.doMove (theGame)) {
 				// Successful move! add move to our set of moves
 				theGame.pushMove (m); 

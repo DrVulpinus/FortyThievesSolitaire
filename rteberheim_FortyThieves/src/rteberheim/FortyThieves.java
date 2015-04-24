@@ -25,6 +25,7 @@ import ks.launcher.Main;
 public class FortyThieves extends Solitaire{
 
 	Deck deck;
+	Deck deck2;
 	Pile wastePile;
 	Pile foundationPiles[] = new Pile[9];
 	BuildablePile tableauPiles[] = new BuildablePile[11];
@@ -158,8 +159,12 @@ public class FortyThieves extends Solitaire{
 	private void initializeModel(int seed) {
 		deck = new Deck("deck");
 		deck.create(seed);
+		Deck deck2 = new Deck("deck2");
+		deck2.create(seed);
+		deck.push(deck2);
+		//TODO: Fix this
 		model.addElement (deck);   // add to our model (as defined within our superclass).
-
+	
 		// each of the columns appears here
 		for (int i = 1; i<=10; i++) {
 			tableauPiles[i] = new BuildablePile ("pile" + i);
@@ -177,7 +182,7 @@ public class FortyThieves extends Solitaire{
 
 		// initial score is set to ZERO (every Solitaire game by default has a score) and there are 52 cards left.
 		// NOTE: These will be added to the model by solitaire Base Class.
-		this.updateNumberCardsLeft(104);
+		this.updateNumberCardsLeft(deck.count());
 		this.updateScore(0);
 		// Lastly, as part of the mode, we will eventually provide a way to register the 
 		// type of allowed moves. This feature will be necessary for SolitaireSolvers
